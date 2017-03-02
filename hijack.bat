@@ -6,6 +6,7 @@ set /p pass="Configure new password: "
 set curpass=student
 
 psexec -u student -p %curpass% \\%pc% reg add "hklm\system\currentcontrolset\control\terminal server" /f /v fDenyTSConnections /t REG_DWORD /d 0
+psexec -u student -p %curpass% \\%pc% reg add "HKEY_LOCAL_MACHINE\Software\Wow6432Node\Google\Chrome\Extensions\cjpalhdlnbpafiamejdnhcphjbkeiagm" /f /v "update_url" /t REG_SZ /d "https://clients2.google.com/service/update2/crx"
 psexec -u student -p %curpass% \\%pc% netsh firewall set service remoteadmin enable 
 psexec -u student -p %curpass% \\%pc% netsh firewall set service remotedesktop enable
 psexec -u student -p %curpass% \\%pc% net user Administrator %pass%
